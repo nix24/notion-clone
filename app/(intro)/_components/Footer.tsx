@@ -14,9 +14,6 @@ const Footer = () => {
   return (
     <footer className="flex items-center justify-center h-24 border-t bg-background w-full">
       <div className="flex flex-row items-center justify-start gap-x-1 px-3">
-        <div className="w-20 h-20">
-          <Logo width={80} height={80} />
-        </div>
         <p className="text-sm md:text-base font-bold">Jotion</p>
       </div>
       <div className="w-full mx-auto flex items-center justify-end gap-x-2 px-5">

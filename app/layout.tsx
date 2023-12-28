@@ -3,7 +3,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 
 import ThemeProvider from "../components/providers/ThemeProvider";
-import { ModeToggle } from "./(root)/_components/ModeToggle";
+import { ModeToggle } from "./(intro)/_components/ModeToggle";
 import { ConvexClientProvider } from "@/components/providers/convexProvider";
 const inter = Inter({ subsets: ["latin"] });
 

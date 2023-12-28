@@ -8,6 +8,9 @@ import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
 import { Skeleton } from "@/components/ui/skeleton";
 import Logo from "./Logo";
+import { useConvexAuth } from "convex/react";
+import Link from "next/link";
+import { SignInButton, SignUpButton } from "@clerk/clerk-react";
 const Heading = () => {
   const bounceAnimation = {
     initial: { scale: 0 },
@@ -20,13 +23,14 @@ const Heading = () => {
       },
     },
   };
+  const { isAuthenticated, isLoading } = useConvexAuth();
 
   return (
     <header className="max-w-3xl space-y-4">
       {/* have img fade in on load  */}
       <div className="w-60 h-60 md:w-[400px] md:h-[400px] mx-auto">
-      {/* if Logo is not loaded, show skeleton  */}
-        <Logo  width={400} height={400} />
+        {/* if Logo is not loaded, show skeleton  */}
+        <Logo width={400} height={400} />
       </div>
       <h1 className="text-4xl md:text-5xl font-bold">
         Work, Notes, & Documents Made so much simpler with:
@@ -42,9 +46,19 @@ const Heading = () => {
       <h3 className="text-xl md:text-2xl font-medium">
         Organize your work better, faster and with others!
       </h3>
-      <Button>
-        Enter Jotion <ArrowRight />
-      </Button>
+      {isLoading && <Skeleton className="w-1/4 h-12 mx-auto" />}
+      {!isAuthenticated && !isLoading && (
+        <SignUpButton mode="modal">
+          <Button className="border" variant="ghost" size="sm">
+            Join us Today!
+          </Button>
+        </SignUpButton>
+      )}
+      {isAuthenticated && !isLoading && (
+        <Button className="border" variant="ghost" size="sm" asChild>
+          <Link href="/documents">Enter Jotion</Link>
+        </Button>
+      )}
     </header>
   );
 };

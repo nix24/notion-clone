@@ -30,7 +30,7 @@ const Heroes = () => {
   }, [controls3, inView3]);
 
   return (
-    <div className="grid grid-cols-1 gap-5 items-center justify-center mx-10 space-y-40">
+    <div className="overflow-auto grid grid-cols-1 gap-5 items-center justify-center mx-10 space-y-40">
       <motion.div
         className="rounded-lg p-4 max-w-screen-md transform md:-translate-x-80"
         ref={ref1}
